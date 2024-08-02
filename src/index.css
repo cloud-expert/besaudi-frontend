@@ -1,0 +1,78 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    font-family: "Poppins", system-ui, sans-serif;
+    background-color: #16082E;
+  }
+}
+
+@keyframes spin {
+  to {
+      transform: rotate(360deg);
+  }
+}
+@layer components {
+  /* .footer-page-link {
+    @apply pt-1 text-sm hover:cursor-pointer hover:underline;
+  }
+  */
+  /* .header-link {
+    @apply p-4 hover:cursor-pointer hover:underline;
+  
+  */
+  .navbar-link {
+    @apply p-4 mx-2 text-white hover:cursor-pointer hover:text-[#D0BCFF];
+  }
+
+  .button {
+    @apply bg-gradient-to-b from-[#632DF2] to-[#472996] rounded-md  py-3 px-10 my-1 text-white 
+          
+          focus:bg-gradient-to-b focus:from-[#632DF2] focus:to-[#472996]
+          active:bg-gradient-to-t active:from-[#632DF2] active:to-[#472996]
+  }
+
+  .usage {
+    background-image: url('/public/img/usage_back.png'), url('/public/img/usage_left.png'), url('/public/img/usage_right.png');
+    background-repeat: no-repeat, no-repeat, no-repeat;
+    background-position: center, left bottom, right top;
+    /* background-size: 90%; */
+  }
+
+  .gradient-text {
+    @apply bg-gradient-to-tr from-[#2A01FF] via-[#BFA6FF] to-[#22007E] text-transparent bg-clip-text
+  }
+
+  .gradient-border {
+    border-width: 0px;
+    padding: 3px;
+    background: linear-gradient(to bottom right, #2A01FF, #BFA6FF 60%, #22007E);
+  }
+  .form-input {
+    @apply rounded-lg border-white text-white my-5 py-2  w-full border-2 bg-transparent pl-10 pr-4  focus:ring-4 focus:ring-white
+  }
+
+  .upload-image {
+    display:inline-block;
+    border: dashed 2px #16082E;
+    background: linear-gradient(to bottom right, #16082E, #341D5B 50%, #16082E) padding-box,
+    linear-gradient(to bottom right, #2A01FF, #BFA6FF 60%, #22007E) border-box; 
+  }
+
+  .sidebar-link { 
+    @apply py-3 text-left text-xl text-white hover:underline  border-t-2 pl-10 hover:cursor-pointer
+  }
+
+  .slider-div {
+    @apply py-2 px-10 
+  }
+  .logout {
+      animation: spin .2s linear forwards;
+  }
+
+
+  
+}
+  
