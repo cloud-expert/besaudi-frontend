@@ -148,7 +148,7 @@ export default function Generateimage({ type }) {
   return (
     <div className="mt-14 ">
       <div className="relative lg:flex md:gap-10">
-        <div className="relative flex align-middle lg:w-1/2 rounded-2xl upload-image max-lg:aspect-video max-h-[600px]">
+        <div className="relative flex align-middle lg:w-1/2 rounded-2xl upload-image max-lg:aspect-video max-h-[800px]">
           <input
             type="file"
             ref={inputRef}
@@ -174,21 +174,22 @@ export default function Generateimage({ type }) {
               className="object-contain w-full h-full rounded-2xl"
             />
           ) : (
-            <div className="flex flex-col items-center justify-center w-1/2 h-full gap-5 mx-auto my-auto text-white">
+            <div className="flex flex-col items-center justify-center w-2/3 h-full gap-5 mx-auto my-auto text-white">
               <FontAwesomeIcon
                 icon={faUpload}
-                className="inline-block mx-auto size-10"
+                className="mx-auto size-10 lg:inline-block hidden"
               />
               <p className="text-xl">
-                <b>Click to upload</b> or drag and drop
+                <b>Click to upload</b><span className="hidden sm:inline"> or drag and drop</span>
+
               </p>
-              <p className="text-lg">Max. File Size: 30MB</p>
+              <p className="text-lg md:block hidden">Max. File Size: 30MB</p>
               <button
                 className="button"
                 onClick={() => inputRef.current.click()}
               >
-                <FontAwesomeIcon icon={faSearch} />
-                &nbsp;&nbsp;&nbsp;Browse File
+                <FontAwesomeIcon icon={faSearch}/>
+                <span  className="md:inline hidden">&nbsp;&nbsp;&nbsp;Browse File</span>
               </button>
             </div>
           )}
@@ -222,7 +223,7 @@ export default function Generateimage({ type }) {
             className={`w-full h-full ${!resultimage && "opacity-35"}`}
           />
 
-          <div className="text-white absolute w-full left-0 top-[45%] text-center text-4xl">
+          <div className="text-white absolute w-full left-0 top-[45%] text-center text-lg sm:text-2xl lg:text-4xl">
             {resultState === 0 ? (
               "No Image Generated"
             ) : resultState === 1 ? (
@@ -265,7 +266,7 @@ export default function Generateimage({ type }) {
             >
               <p>
                 <FontAwesomeIcon icon={faMale} />
-                &nbsp;&nbsp; Male&nbsp;&nbsp;
+                <span className="sm:inline hidden">&nbsp;&nbsp; Male</span>&nbsp;&nbsp;
                 {!gender && <FontAwesomeIcon icon={faCheck} />}
               </p>
             </div>
@@ -277,27 +278,27 @@ export default function Generateimage({ type }) {
             >
               <p>
                 <FontAwesomeIcon icon={faFemale} />
-                &nbsp;&nbsp; Female&nbsp;&nbsp;
+                <span className="sm:inline hidden">&nbsp;&nbsp; Female</span>&nbsp;&nbsp;
                 {!!gender && <FontAwesomeIcon icon={faCheck} />}
               </p>
             </div>
           </div>
-          <div className="flex justify-center w-1/2 px-4 ">
+          <div className="flex justify-center w-1/2 ">
             <button
-              className="w-full my-auto align-middle button"
+              className="w-full my-auto align-middle button px-0"
               onClick={generate}
             >
               <img
                 src="/img/gen_icon.png"
                 alt="adf"
-                className="inline mr-2 size-6"
+                className="sm:inline hidden mr-2 size-6"
               />
               Generate
             </button>
           </div>
         </div>
       </div>
-      <div className="mt-10 lg:mx-40">
+      <div className="mt-10 mx-2 md:mx-10 lg:mx-40">
         <Template
           data={type ? livesaudi_templates : besaudi_templates}
           setCurrentTemplate={setCurrentTemplate}

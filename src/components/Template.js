@@ -3,12 +3,30 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import "./Sliders.css";
+import { useEffect } from "react";
 
 export default function Template({
   data,
   currentTemplate,
   setCurrentTemplate,
 }) {
+  const [slidesToShow, setSlidesToShow] = useState(3);
+  useEffect(() => {
+    const handleResize = () => {
+      const windowWidth = window.innerWidth;
+      if (windowWidth <= 768) { // Adjust breakpoint as needed
+        setSlidesToShow(1);
+      } else {
+        setSlidesToShow(3);
+      }
+    };
+
+    window.addEventListener("resize", handleResize);
+
+    // Cleanup function to remove event listener on component unmount
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
   const GalleryPrevArrow = ({ currentSlide, slideCount, ...props }) => {
     const { className, onClick } = props;
 
@@ -46,8 +64,8 @@ export default function Template({
     centerMode: true,
     focusOnSelect: true,
     infinite: true,
-    centerPadding: "100px",
-    slidesToShow: 3,
+    centerPadding: "10px",
+    slidesToShow,
     speed: 500,
     nextArrow: <GalleryNextArrow />,
     prevArrow: <GalleryPrevArrow />,

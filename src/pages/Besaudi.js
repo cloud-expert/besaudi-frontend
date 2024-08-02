@@ -4,7 +4,7 @@ import Generateimage from "../components/Generateimage";
 import { getCurrentUser } from "../services/auth.service";
 export default function BeSaudi() {
   return (
-    <div className="bg-[#16082E]  px-16 relative  overflow-hidden">
+    <div className="bg-[#16082E] px-4 md:px-8 lg:px-16 relative  overflow-hidden">
       <div
         className="absolute w-[600px] h-[600px] top-[-91px] left-[-232px] 
       rounded-[50%] bg-gradient-to-br from-purple-600 opacity-30 blur-3xl"
