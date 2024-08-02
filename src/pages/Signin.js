@@ -91,7 +91,7 @@ export default function SignIn() {
       ></div>
 
       <div className="flex items-center">
-        <div className="w-1/2 h-full ">
+        <div className="lg:w-1/2 lg:block hidden h-full">
           <img
             src="/img/signin_logo.png"
             alt="signup"
@@ -99,10 +99,10 @@ export default function SignIn() {
             onClick={() => navigate("/")}
           />
         </div>
-        <div className="w-1/2 text-white">
-          <form className="w-1/2 mx-auto">
+        <div className="lg:w-1/2 w-full text-white">
+          <form className="lg:w-1/2 lg:mx-auto md:mx-10 mx-5">
             <div className="text-center">
-              <h1 className="py-4 my-10 text-5xl font-bold gradient-text">
+              <h1 className="my-10 text-5xl font-bold gradient-text">
                 Sign in now
               </h1>
             </div>
