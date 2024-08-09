@@ -9,22 +9,24 @@ import {
   faTshirt,
 } from "@fortawesome/fontawesome-free-solid";
 import { useState } from "react";
+import { useTranslation } from "react-i18next";
 
 export default function Advantage() {
+  const { i18n, t } = useTranslation();
   const [activeIndex, setActiveIndex] = useState(0);
   return (
     <div className="px-16 pb-20 mt-12 -mx-16">
       <h1 className="mb-20 text-5xl font-bold text-center text-transparent bg-gradient-to-b from-gray-800 via-white to-gray-800 bg-clip-text">
-        Saudi Uniform Generator Online, Simple, Fast, and Fun
+        {t("advantage_title")}
       </h1>
       <div className="grid grid-cols-1 gap-16 md:grid-cols-2">
         <div onClick={() => setActiveIndex(0)}>
           <Advantagecard
             icon={<FontAwesomeIcon icon={faMobile} />}
             active={activeIndex === 0}
-            title={"Easy-to-use"}
+            title={t("advantage_1_title")}
             content={
-              "All you need to do is upload an excellent face portrait and select the desired template. AI will generate Saudi Uniform smoothly without requiring manual editing."
+              t("advantage_1_content")
             }
           />
         </div>
@@ -32,9 +34,9 @@ export default function Advantage() {
           <Advantagecard
             icon={<FontAwesomeIcon icon={faShieldAlt} />}
             active={activeIndex === 1}
-            title={"Privacy Protection"}
+            title={t("advantage_2_title")}
             content={
-              "We promise that all your uploaded images and other data will be protected well. No one will see these things except yourself. We make sure the Saudi uniform procedure is highly private."
+              t("advantage_2_content")
             }
           />
         </div>
@@ -42,9 +44,9 @@ export default function Advantage() {
           <Advantagecard
             icon={<FontAwesomeIcon icon={faClock} />}
             active={activeIndex === 2}
-            title={"One-sec Saudi Uniform"}
+            title={t("advantage_3_title")}
             content={
-              "This online AI Saudi Uniform app can generate Saudi-uniform of anyone online. No installation, no ads, and no watermarks! Create your Saudi-uniform magic in fantastic style and without too much effort!"
+              t("advantage_3_content")
             }
           />
         </div>
@@ -52,9 +54,9 @@ export default function Advantage() {
           <Advantagecard
             icon={<FontAwesomeIcon icon={faTshirt} />}
             active={activeIndex === 3}
-            title={"Saudi-Uniform Options"}
+            title={t("advantage_4_title")}
             content={
-              "Choose from diverse options tailored to your preference. Pick from a wide range of stylized options. You can be anyone you want to be."
+              t("advantage_4_content")
             }
           />
         </div>
@@ -62,9 +64,9 @@ export default function Advantage() {
           <Advantagecard
             icon={<FontAwesomeIcon icon={faRssSquare} />}
             active={activeIndex === 4}
-            title={"Seamless Results"}
+            title={t("advantage_5_title")}
             content={
-              "Advanced AI algorithms power it. Saudi-uniform ensures seamless and realistic Saudi uniform. Anyone will naturally be put on Saudi uniform without introducing artifacts."
+              t("advantage_5_content")
             }
           />
         </div>
@@ -72,9 +74,9 @@ export default function Advantage() {
           <Advantagecard
             icon={<FontAwesomeIcon icon={faSmile} />}
             active={activeIndex === 5}
-            title={"For Funny Memes and Gifs"}
+            title={t("advantage_6_title")}
             content={
-              "We promise that all your uploaded images and other data will be protected well. No one will see these things except yourself. We make sure the Saudi uniform procedure is highly private."
+              t("advantage_6_content")
             }
           />
         </div>

@@ -6,7 +6,9 @@ import "react-toastify/dist/ReactToastify.css";
 import { useEffect } from "react";
 import axios from "axios";
 import { googleLogout, useGoogleLogin } from "@react-oauth/google";
+import { useTranslation } from "react-i18next";
 export default function SignUp() {
+  const {i18n, t} = useTranslation();
   const navigate = useNavigate();
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -103,7 +105,7 @@ export default function SignUp() {
           <form className="lg:w-1/2 lg:mx-auto md:mx-10 mx-5">
             <div className="text-center">
               <h1 className="py-4 my-10 text-5xl font-bold gradient-text">
-                Sign up for free
+                {t("signup_title")}
               </h1>
             </div>
             <button className="form-input" onClick={handleGoogle}>
@@ -133,14 +135,14 @@ export default function SignUp() {
                 ></path>
                 <path fill="none" d="M0 0h48v48H0z"></path>
               </svg>
-              &nbsp;&nbsp;Sign up with Google
+              &nbsp;&nbsp;{t("signup_google")}
             </button>
 
             <hr></hr>
             <div className="relative">
               <input
                 type="text"
-                placeholder="Name"
+                placeholder={t("name")}
                 className="form-input"
                 value={name}
                 onChange={(e) => setName(e.target.value)}
@@ -160,7 +162,7 @@ export default function SignUp() {
             <div className="relative">
               <input
                 type="text"
-                placeholder="Email"
+                placeholder={t("email")}
                 className="form-input"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
@@ -179,7 +181,7 @@ export default function SignUp() {
             <div className="relative">
               <input
                 type="password"
-                placeholder="Password"
+                placeholder={t("password")}
                 className="form-input"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
@@ -200,12 +202,12 @@ export default function SignUp() {
               className="w-full mx-auto button "
               onClick={handleRegister}
             >
-              Sign Up
+              {t("signup")}
             </button>
             <p>
-              Already have an account?&nbsp;&nbsp;&nbsp;
+              {t("signup_question")}&nbsp;&nbsp;&nbsp;
               <a href="/#/signin" className="text-purple-400">
-                Sign in
+                {t("signin")}
               </a>
             </p>
           </form>

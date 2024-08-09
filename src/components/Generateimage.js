@@ -21,8 +21,11 @@ import "react-multi-carousel/lib/styles.css";
 import Template from "./Template";
 import { saveGallery } from "../services/gallery.service";
 import { getCurrentUser } from "../services/auth.service";
+import { useTranslation } from "react-i18next";
+
 
 export default function Generateimage({ type }) {
+  const { i18n, t } = useTranslation();
   const [gender, setGender] = useState(0);
   const [currentTemplate, setCurrentTemplate] = useState(0);
 
@@ -171,7 +174,7 @@ export default function Generateimage({ type }) {
             <img
               src={URL.createObjectURL(sourceimage)}
               alt="sdf"
-              className="object-contain w-full h-full rounded-2xl"
+              className="object-contain items-center justify-center rounded-2xl mx-auto"
             />
           ) : (
             <div className="flex flex-col items-center justify-center w-2/3 h-full gap-5 mx-auto my-auto text-white">
@@ -180,16 +183,16 @@ export default function Generateimage({ type }) {
                 className="mx-auto size-10 lg:inline-block hidden"
               />
               <p className="text-xl">
-                <b>Click to upload</b><span className="hidden sm:inline"> or drag and drop</span>
+                <span className="hidden sm:inline">{t("upload_instruction")}</span>
 
               </p>
-              <p className="text-lg md:block hidden">Max. File Size: 30MB</p>
+              <p className="text-lg md:block hidden">{t("size_limit")}</p>
               <button
                 className="button"
                 onClick={() => inputRef.current.click()}
               >
                 <FontAwesomeIcon icon={faSearch}/>
-                <span  className="md:inline hidden">&nbsp;&nbsp;&nbsp;Browse File</span>
+                <span  className="md:inline hidden">&nbsp;&nbsp;&nbsp;{t("browse")}</span>
               </button>
             </div>
           )}
@@ -225,7 +228,7 @@ export default function Generateimage({ type }) {
 
           <div className="text-white absolute w-full left-0 top-[45%] text-center text-lg sm:text-2xl lg:text-4xl">
             {resultState === 0 ? (
-              "No Image Generated"
+              t("no_image")
             ) : resultState === 1 ? (
               <span>
                 {" "}
@@ -266,7 +269,7 @@ export default function Generateimage({ type }) {
             >
               <p>
                 <FontAwesomeIcon icon={faMale} />
-                <span className="sm:inline hidden">&nbsp;&nbsp; Male</span>&nbsp;&nbsp;
+                <span className="sm:inline hidden">&nbsp;&nbsp; {t("male")}</span>&nbsp;&nbsp;
                 {!gender && <FontAwesomeIcon icon={faCheck} />}
               </p>
             </div>
@@ -278,12 +281,12 @@ export default function Generateimage({ type }) {
             >
               <p>
                 <FontAwesomeIcon icon={faFemale} />
-                <span className="sm:inline hidden">&nbsp;&nbsp; Female</span>&nbsp;&nbsp;
+                <span className="sm:inline hidden">&nbsp;&nbsp; {t("female")}</span>&nbsp;&nbsp;
                 {!!gender && <FontAwesomeIcon icon={faCheck} />}
               </p>
             </div>
           </div>
-          <div className="flex justify-center w-1/2 ">
+          <div className="flex justify-center w-1/2 px-4 py-6 ">
             <button
               className="w-full my-auto align-middle button px-0"
               onClick={generate}
@@ -293,7 +296,7 @@ export default function Generateimage({ type }) {
                 alt="adf"
                 className="sm:inline hidden mr-2 size-6"
               />
-              Generate
+              {t("generate")}
             </button>
           </div>
         </div>
@@ -345,9 +348,7 @@ export default function Generateimage({ type }) {
       </div>
 
       <p className="font-bold text-center text-white">
-        By uploading the images, you agree with our{" "}
-        <span className="gradient-text">Privacy Policy</span>&nbsp; and{" "}
-        <span className="gradient-text">Terms of Use</span>
+        {t("terms_of_use")}
       </p>
     </div>
   );

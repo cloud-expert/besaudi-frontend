@@ -2,8 +2,11 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCamera, faMinus } from "@fortawesome/fontawesome-free-solid";
 import { useState } from "react";
 import MyDropdown from "./MyDropdown";
-
+import { useNavigate } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 export default function Hero({ onSectionClick }) {
+  const { i18n, t } = useTranslation();
+  const navigate = useNavigate();
   const scrollToSection = (ref) => {
     console.log(ref);
     window.scrollTo({
@@ -14,15 +17,13 @@ export default function Hero({ onSectionClick }) {
   const [logoIndex, setLogoIndex] = useState(0);
   const logoData = [
     {
-      title: "Experience the traditional Saudi costumes with AI power!",
-      content:
-        "Try cool stuff of traditional Saudi costumes and enjoy the experience of being Saudi. Upload your photo now and give it a try!",
+      title: t("title1"),
+      content:t("subtitle1"),
       img_path: "/img/be_sample.png",
     },
     {
-      title: "Experience and live Saudi landmarks with AI power!",
-      content:
-        "Try cool stuff with live Saudi landmarks and enjoy the experience of being in Saudi. Upload your photo now and give it a try!",
+      title: t("title2"),
+      content:t("subtitle2"),
       img_path: "/img/live_sample.png",
     },
   ];
@@ -38,9 +39,9 @@ export default function Hero({ onSectionClick }) {
             <p className="mb-8 text-lg md:text-xl lg:text-2xl ">
               {logoData[logoIndex].content}
             </p>
-            <button className="button">
+            <button className="button" onClick={() => navigate("/besaudi")}>
               <FontAwesomeIcon icon={faCamera} className="mr-3" />
-              Upload Image Now
+              {t("button_text")}
             </button>
           </div>
           <img

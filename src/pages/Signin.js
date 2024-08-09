@@ -7,7 +7,10 @@ import { googleLogout, useGoogleLogin } from "@react-oauth/google";
 import { useEffect } from "react";
 import axios from "axios";
 import { register } from "../services/auth.service";
+import { useTranslation } from "react-i18next";
+
 export default function SignIn() {
+  const {i18n, t} = useTranslation();
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -103,7 +106,7 @@ export default function SignIn() {
           <form className="lg:w-1/2 lg:mx-auto md:mx-10 mx-5">
             <div className="text-center">
               <h1 className="my-10 text-5xl font-bold gradient-text">
-                Sign in now
+                {t("login_title")}
               </h1>
             </div>
             <button className="form-input" onClick={handleGoogle}>
@@ -133,7 +136,7 @@ export default function SignIn() {
                 ></path>
                 <path fill="none" d="M0 0h48v48H0z"></path>
               </svg>
-              &nbsp;&nbsp;Sign in with Google
+              &nbsp;&nbsp;{t("login_google")}
             </button>
 
             <hr></hr>
@@ -141,7 +144,7 @@ export default function SignIn() {
             <div className="relative">
               <input
                 type="text"
-                placeholder="Email"
+                placeholder={t("email")}
                 className="form-input"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
@@ -160,7 +163,7 @@ export default function SignIn() {
             <div className="relative">
               <input
                 type="password"
-                placeholder="Password"
+                placeholder={t("password")}
                 className="form-input"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
@@ -181,16 +184,16 @@ export default function SignIn() {
               className="w-full mx-auto button "
               onClick={handleLogin}
             >
-              Sign In
+              {t("signin")}
             </button>
 
             <div className="relative">
-              <button className="form-input">Forget Password</button>
+              <button className="form-input">{t("forgot_password")}</button>
             </div>
             <p>
-              Don't have an account?&nbsp;&nbsp;&nbsp;
+            {t("login_question")}&nbsp;&nbsp;&nbsp;
               <a href="/#/signup" className="text-purple-400">
-                Sign up
+              {t("signup")}
               </a>
             </p>
           </form>

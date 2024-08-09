@@ -7,6 +7,7 @@ import "slick-carousel/slick/slick-theme.css";
 
 import App from "./App";
 import { HashRouter } from "react-router-dom";
+import i18n from "./i18n";
 
 import { GoogleOAuthProvider } from "@react-oauth/google";
 const root = ReactDOM.createRoot(document.getElementById("root"));
