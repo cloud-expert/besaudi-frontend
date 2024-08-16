@@ -23,7 +23,7 @@ import { saveGallery } from "../services/gallery.service";
 import { getCurrentUser } from "../services/auth.service";
 import { useTranslation } from "react-i18next";
 
-
+import { useEffect } from "react";
 export default function Generateimage({ type }) {
   const { i18n, t } = useTranslation();
   const [gender, setGender] = useState(0);
@@ -148,10 +148,25 @@ export default function Generateimage({ type }) {
     alink.download = "image.png";
     alink.click();
   };
+
+  const [imageDimensions, setImageDimensions] = useState(null);
+
+  useEffect(() => {
+    
+
+    const img = new Image();
+
+    img.onload = () => {
+      console.log(img.width, img.height)
+      setImageDimensions({ width: img.width, height: img.height });
+      console.log(img.width, img.height)
+    };
+    img.src = "/img/be_template10.png";
+  }, []);
   return (
     <div className="mt-14 ">
       <div className="relative lg:flex md:gap-10">
-        <div className="relative flex align-middle lg:w-1/2 rounded-2xl upload-image max-lg:aspect-video max-h-[800px]">
+        <div className="relative flex align-middle lg:w-1/2 h-[30vw] w-full rounded-2xl upload-image max-lg:aspect-video">
           <input
             type="file"
             ref={inputRef}
@@ -174,7 +189,8 @@ export default function Generateimage({ type }) {
             <img
               src={URL.createObjectURL(sourceimage)}
               alt="sdf"
-              className="object-contain items-center justify-center rounded-2xl mx-auto"
+              className={`object-contain w-full h-full`}
+              // style={{ maxWidth: imageDimensions?.width, maxHeight: imageDimensions?.height }}
             />
           ) : (
             <div className="flex flex-col items-center justify-center w-2/3 h-full gap-5 mx-auto my-auto text-white">
@@ -252,7 +268,7 @@ export default function Generateimage({ type }) {
                     d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
                   ></path>
                 </svg>
-                Generating ...
+                {t("generating")}
               </span>
             ) : (
               ""

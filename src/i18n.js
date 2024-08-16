@@ -2,8 +2,8 @@ import i18n from "i18next";
 import { initReactI18next } from "react-i18next";
 
 i18n.use(initReactI18next).init({
-  lng: "en",
-  fallbackLng: "en",
+  lng: "ar",
+  fallbackLng: "ar",
   interpolation: {
     escapeValue: false,
   },
@@ -79,7 +79,7 @@ i18n.use(initReactI18next).init({
             signup_google: "Sign up with google",
             name: "Name",
             signup_question: "Already have an account?",
-
+            generating: "Generating..."
             
         }
     },
@@ -155,6 +155,7 @@ i18n.use(initReactI18next).init({
           signup_google: "سجل باستخدام جوجل",
           name: "اسم",
           signup_question: "هل لديك حساب بالفعل؟",
+          generating: "توليد..."
         }
     },
   },
